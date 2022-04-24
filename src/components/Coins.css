@@ -1,10 +1,36 @@
-.coin {
+.search-box {
+  width: 15%;
   display: grid;
-  text-align: center;
+  justify-content: center;
 
-  justify-items: center;
-  background-color: red;
+  background-color: aqua;
+  border-style: solid;
+  border-radius: 14px;
+  box-shadow: 0px 0px 5px rgba(66, 66, 66, 0.75);
+  padding: 5px;
+  margin: 15px;
 }
-.coin-icon {
-  width: 20%;
+
+@media only screen and (min-width: 768px) {
+  .coins {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(18%, 5fr));
+    gap: 10px;
+    margin: 0 10px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .coins {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(40%, 5fr));
+    gap: 8px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .coins {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(50%, 5fr));
+    gap: 5px;
+  }
 }
