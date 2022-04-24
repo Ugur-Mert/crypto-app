@@ -26,7 +26,7 @@ export default function Coins() {
   );
 
   return (
-    <div>
+    <div className="coins-page">
       <div className="search-box">
         <input
           type={"text"}
