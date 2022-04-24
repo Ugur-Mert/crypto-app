@@ -1,0 +1,5 @@
+.coins {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18%, 5fr));
+  gap: 10px;
+}

@@ -1,0 +1,10 @@
+.coin {
+  display: grid;
+  text-align: center;
+
+  justify-items: center;
+  background-color: red;
+}
+.coin-icon {
+  width: 20%;
+}
