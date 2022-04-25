@@ -38,8 +38,8 @@ export default function Coinpage() {
           <p>Genesis date: {singleCoin.genesis_date}</p>
           {singleCoin.links ? (
             <p>
-              {singleCoin.name}
-              <a href={singleCoin.links.homepage}> Homepage </a>{" "}
+              {singleCoin.name} Homepage:
+              <a href={singleCoin.links.homepage}> {singleCoin.name}</a>
             </p>
           ) : null}
           {singleCoin.market_data ? (

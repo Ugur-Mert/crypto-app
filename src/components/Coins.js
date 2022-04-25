@@ -18,7 +18,6 @@ export default function Coins() {
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
-    console.log(search);
   };
 
   const filteredCoins = coin.filter((coin) =>
