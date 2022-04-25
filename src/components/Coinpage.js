@@ -18,8 +18,6 @@ export default function Coinpage() {
     [url]
   );
 
-  console.log(singleCoin.id);
-
   return (
     <div className="coin-page">
       <div className="img-detail">
@@ -57,50 +55,54 @@ export default function Coinpage() {
         {singleCoin.market_data ? (
           <table>
             <thead>
-              <th>24h</th>
-              <th>7d</th>
-              <th>14d</th>
-              <th>30d</th>
-              <th>60d</th>
-              <th>1y</th>
+              <tr>
+                <th>24h</th>
+                <th>7d</th>
+                <th>14d</th>
+                <th>30d</th>
+                <th>60d</th>
+                <th>1y</th>
+              </tr>
             </thead>
             <tbody>
-              <td>
-                {
-                  singleCoin.market_data.price_change_percentage_24h_in_currency
-                    .usd
-                }
-              </td>
-              <td>
-                {
-                  singleCoin.market_data.price_change_percentage_7d_in_currency
-                    .usd
-                }
-              </td>
-              <td>
-                {
-                  singleCoin.market_data.price_change_percentage_14d_in_currency
-                    .usd
-                }
-              </td>
-              <td>
-                {
-                  singleCoin.market_data.price_change_percentage_30d_in_currency
-                    .usd
-                }
-              </td>
-              <td>
-                {
-                  singleCoin.market_data.price_change_percentage_60d_in_currency
-                    .usd
-                }
-              </td>
-              <td>
-                {
-                  singleCoin.market_data.price_change_percentage_1y_in_currency
-                    .usd
-                }
-              </td>
+              <tr>
+                <td>
+                  {
+                    singleCoin.market_data
+                      .price_change_percentage_24h_in_currency.usd
+                  }
+                </td>
+                <td>
+                  {
+                    singleCoin.market_data
+                      .price_change_percentage_7d_in_currency.usd
+                  }
+                </td>
+                <td>
+                  {
+                    singleCoin.market_data
+                      .price_change_percentage_14d_in_currency.usd
+                  }
+                </td>
+                <td>
+                  {
+                    singleCoin.market_data
+                      .price_change_percentage_30d_in_currency.usd
+                  }
+                </td>
+                <td>
+                  {
+                    singleCoin.market_data
+                      .price_change_percentage_60d_in_currency.usd
+                  }
+                </td>
+                <td>
+                  {
+                    singleCoin.market_data
+                      .price_change_percentage_1y_in_currency.usd
+                  }
+                </td>
+              </tr>
             </tbody>
           </table>
         ) : null}
