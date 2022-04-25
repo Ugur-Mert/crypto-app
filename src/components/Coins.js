@@ -46,6 +46,7 @@ export default function Coins() {
               high24={coin.high_24h}
               low24={coin.low_24h}
               lastupdate={coin.last_updated}
+              id={coin.id}
             />
           );
         })}

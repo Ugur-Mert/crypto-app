@@ -13,6 +13,10 @@
   padding: 5px;
   margin: 15px;
 }
+.coin-link {
+  color: #97a5af;
+  text-decoration: none;
+}
 
 @media only screen and (min-width: 768px) {
   .coins {

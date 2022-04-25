@@ -1,0 +1,18 @@
+.coin-page {
+  display: grid;
+  margin-top: 50px;
+  color: white;
+  color: #97a5af;
+  font-family: "Karla", sans-serif;
+  justify-content: center;
+}
+.img-detail {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 50px;
+}
+.coin-table {
+  display: grid;
+  text-align: center;
+}
