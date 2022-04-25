@@ -6,6 +6,8 @@
   border-radius: 8px;
   color: #97a5af;
   font-family: "Karla", sans-serif;
+  animation: scaledown 0.4s linear;
+  animation-fill-mode: forwards;
 }
 .price {
   font-weight: 700;
@@ -13,4 +15,22 @@
 }
 .coin-icon {
   width: 20%;
+}
+
+.coin:hover {
+  z-index: 100;
+  animation: scale 0.4s linear;
+  animation-fill-mode: forwards;
+  background-color: #495371;
+}
+
+@keyframes scale {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
 }
