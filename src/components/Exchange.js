@@ -1,12 +1,12 @@
 import React from "react";
-import Select from "react-select";
+import "./Exchange.css";
 
 export default function Exchange() {
   const [number, setNumber] = React.useState(1);
   const [getCoin, setGetCoin] = React.useState([]);
-  const [primaryChosen, setPrimaryChosen] = React.useState(null);
-  const [secondaryChosen, setSecondaryChosen] = React.useState(null);
-  const [result, setResult] = React.useState("");
+  const [primaryChosen, setPrimaryChosen] = React.useState("BTC");
+  const [secondaryChosen, setSecondaryChosen] = React.useState("BTC");
+  const [result, setResult] = React.useState({});
 
   React.useEffect(function () {
     async function getCoins() {
@@ -19,15 +19,23 @@ export default function Exchange() {
     getCoins();
   }, []);
 
-  const handleConvert = () => {
-    if (getCoin.symbol == primaryChosen) {
-      setResult(number * primaryChosen);
-    }
-    //setResult((number * primaryChosen) / (number2 * secondaryChosen));
-  };
+  const url = `https://api.coinconvert.net/convert/${primaryChosen}/${secondaryChosen}?amount=${number}`;
+
+  React.useEffect(
+    function () {
+      async function getConverter() {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        setResult(data);
+      }
+      getConverter();
+    },
+    [url]
+  );
 
   return (
-    <div>
+    <div className="converter">
       <h1>Crypto Converter</h1>
       <input
         type={"number"}
@@ -40,8 +48,8 @@ export default function Exchange() {
         name="primary-chosen"
         onChange={(e) => setPrimaryChosen(e.target.value)}
       >
-        {getCoin.map((getsCoin) => (
-          <option value={getsCoin.symbol} key={getsCoin.id}>
+        {getCoin.map((getsCoin, index) => (
+          <option value={getsCoin.symbol} key={index} id={index}>
             {getsCoin.symbol.toUpperCase()}
           </option>
         ))}
@@ -49,7 +57,7 @@ export default function Exchange() {
 
       <select
         name="secondary-chosen"
-        onChange={(e) => setSecondaryChosen(e.target.value)}
+        onChange={(e) => setSecondaryChosen(e.target.value.toLocaleUpperCase())}
       >
         {getCoin.map((getsCoin) => (
           <option key={getsCoin.id} value={getsCoin.symbol}>
@@ -57,8 +65,14 @@ export default function Exchange() {
           </option>
         ))}
       </select>
-      <button onClick={handleConvert}>CONVERT</button>
-      <h1>{result}</h1>
+      <p>
+        {number} {primaryChosen} = {""}
+        {Object.entries(result)
+          .slice(-1)
+          .map((entry) => entry[1])}{" "}
+        {""}
+        {secondaryChosen}
+      </p>
     </div>
   );
 }
