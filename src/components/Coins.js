@@ -1,6 +1,7 @@
 import React from "react";
 import Coin from "./Coin";
 import "./Coins.css";
+import { FaSearch } from "react-icons/fa";
 export default function Coins() {
   const [coin, setCoin] = React.useState([]);
   const [search, setSearch] = React.useState("");
@@ -27,7 +28,9 @@ export default function Coins() {
   return (
     <div className="coins-page">
       <div className="search-box">
+        <FaSearch />
         <input
+          className="search-input"
           type={"text"}
           placeholder="Search coin"
           onChange={handleSearch}

@@ -38,41 +38,52 @@ export default function Exchange() {
     <div className="converter">
       <h1>Crypto Converter</h1>
       <input
+        className="converter-input"
         type={"number"}
         value={number}
         onChange={(e) => {
           setNumber(e.target.value);
         }}
       />
-      <select
-        name="primary-chosen"
-        onChange={(e) => setPrimaryChosen(e.target.value)}
-      >
-        {getCoin.map((getsCoin, index) => (
-          <option value={getsCoin.symbol} key={index} id={index}>
-            {getsCoin.symbol.toUpperCase()}
-          </option>
-        ))}
-      </select>
+      <div className="options">
+        <select
+          name="primary-chosen"
+          onChange={(e) => setPrimaryChosen(e.target.value)}
+        >
+          {getCoin.map((getsCoin, index) => (
+            <option value={getsCoin.symbol} key={index} id={index}>
+              {getsCoin.symbol.toUpperCase()}
+            </option>
+          ))}
+        </select>
+        to
+        <select
+          name="secondary-chosen"
+          onChange={(e) =>
+            setSecondaryChosen(e.target.value.toLocaleUpperCase())
+          }
+        >
+          {getCoin.map((getsCoin) => (
+            <option key={getsCoin.id} value={getsCoin.symbol}>
+              {getsCoin.symbol.toUpperCase()}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <select
-        name="secondary-chosen"
-        onChange={(e) => setSecondaryChosen(e.target.value.toLocaleUpperCase())}
-      >
-        {getCoin.map((getsCoin) => (
-          <option key={getsCoin.id} value={getsCoin.symbol}>
-            {getsCoin.symbol.toUpperCase()}
-          </option>
-        ))}
-      </select>
-      <p>
-        {number} {primaryChosen} = {""}
-        {Object.entries(result)
-          .slice(-1)
-          .map((entry) => entry[1])}{" "}
-        {""}
-        {secondaryChosen}
-      </p>
+      {result.status === "success" ? (
+        <p>
+          {number} {primaryChosen} = {""}
+          <span className="input-result">
+            {Object.entries(result)
+              .slice(-1)
+              .map((entry) => entry[1])}
+          </span>{" "}
+          {secondaryChosen}
+        </p>
+      ) : (
+        <p>This cryptocurrency is not supported </p>
+      )}
     </div>
   );
 }
